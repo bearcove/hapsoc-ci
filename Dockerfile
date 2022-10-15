@@ -21,17 +21,29 @@ RUN set -eux; \
 		# Generally useful, to check if a file is a binary
 		file \
 		less \
+		# C & C++ compiler
+		gcc g++ \
+		# Various build tools
+		make pkg-config \
+		# Standard C library
+		libc6-dev \
+		# zlib
+		zlib1g-dev \
+		# ICU (needed by github actions runner)
+		libicu66 \
+		# Needed by some crates (quickjs) to apply patches
+		patch \
+		# Needed by some crates that ship assemby (ravif)
+		nasm \
 		; \
 		apt clean autoclean; \
 		apt autoremove --yes; \
 		rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-# Install python, C & C++ compiler, and ninja
+# Various dependencies (github actions edition)
 RUN set -eux; \
 		apt update; \
 		apt install --yes --no-install-recommends \
-		# C & C++ compiler
-		gcc g++ \
 		; \
 		apt clean autoclean; \
 		apt autoremove --yes; \
@@ -90,42 +102,6 @@ RUN set -eux; \
 RUN set -eux; \
 		curl --fail --location "https://uploader.codecov.io/latest/linux/codecov" --output "/usr/local/bin/codecov"; \
 		chmod +x "/usr/local/bin/codecov";
-
-# Various dependencies
-RUN set -eux; \
-		apt update; \
-		apt install --yes --no-install-recommends \
-		# C & C++ compiler
-		gcc g++ \
-		# Used as linker
-		clang \
-		# Various build tools
-		make pkg-config \
-		# Standard C library
-		libc6-dev \
-		# zlib
-		zlib1g-dev \
-		# LLVM Linker (faster than GNU ld)
-		lld \
-		# Needed by some crates (quickjs) to apply patches
-		patch \
-		# Needed by some crates that ship assemby (ravif)
-		nasm \
-		; \
-		apt clean autoclean; \
-		apt autoremove --yes; \
-		rm -rf /var/lib/{apt,dpkg,cache,log}/
-
-# Various dependencies (github actions edition)
-RUN set -eux; \
-		apt update; \
-		apt install --yes --no-install-recommends \
-		# ICU 
-		libicu66 \
-		; \
-		apt clean autoclean; \
-		apt autoremove --yes; \
-		rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 ARG USERNAME=ci
 ARG USER_UID=1000

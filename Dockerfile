@@ -86,6 +86,11 @@ RUN set -eux; \
 		rm /tmp/cargo-llvm-cov.tar.gz; \
 		chmod +x /usr/local/bin/cargo-llvm-cov;
 
+# Install codecov uploader
+RUN set -eux; \
+		curl --fail --location "https://uploader.codecov.io/latest/linux/codecov" --output "/usr/local/bin/codecov"; \
+		chmod +x "/usr/local/bin/codecov";
+
 # Various dependencies
 RUN set -eux; \
 		apt update; \

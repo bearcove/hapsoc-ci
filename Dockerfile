@@ -78,6 +78,14 @@ RUN set -eux; \
 		rm /tmp/cargo-udeps.tar.gz; \
 		chmod +x /usr/local/bin/cargo-udeps;
 
+# Install cargo-llvm-cov
+ENV CARGO_LLVM_COV_VERSION=v0.5.0
+RUN set -eux; \
+		curl --fail --location "https://github.com/taiki-e/cargo-llvm-cov/releases/download/${CARGO_LLVM_COV_VERSION}/cargo-llvm-cov-x86_64-unknown-linux-musl.tar.gz" --output /tmp/cargo-llvm-cov.tar.gz; \
+		tar --directory "/usr/local/bin" -xzvf "/tmp/cargo-llvm-cov.tar.gz"; \
+		rm /tmp/cargo-llvm-cov.tar.gz; \
+		chmod +x /usr/local/bin/cargo-llvm-cov;
+
 # Various dependencies
 RUN set -eux; \
 		apt update; \

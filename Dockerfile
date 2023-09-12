@@ -133,9 +133,9 @@ RUN set -eux; \
 
 # Install github actions runner
 RUN set -eux; \
-		curl -o actions-runner-linux-x64-2.298.2.tar.gz -L \
-			https://github.com/actions/runner/releases/download/v2.298.2/actions-runner-linux-x64-2.298.2.tar.gz ; \
-		tar xzf ./actions-runner-linux-x64-2.298.2.tar.gz ; \
+		curl -o actions-runner-linux-x64-2.309.0.tar.gz -L \
+			https://github.com/actions/runner/releases/download/v2.309.0/actions-runner-linux-x64-2.309.0.tar.gz ; \
+		tar xzf ./actions-runner-linux-x64-2.309.0.tar.gz ; \
 		echo "Done"
 
 COPY ./entrypoint-root.sh .

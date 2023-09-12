@@ -17,5 +17,5 @@ export RUSTC_WRAPPER=sccache
 	--name flym \
 	--replace \
 	--work ../vol/work \
-	--token "${GITHUB_ACTIONS_TOKEN}"
+	--pat "${GITHUB_ACTIONS_TOKEN}"
 ./run.sh

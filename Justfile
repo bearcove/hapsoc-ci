@@ -21,7 +21,8 @@ run *args:
   just docker-push
   fly m run \
     --region iad \
-    --size shared-cpu-8x \
+    --cpus 8 \
+    --memory 4096 \
     --volume ci:/vol \
     registry.fly.io/hapsoc-ci:latest {{args}}
 

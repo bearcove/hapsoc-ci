@@ -18,7 +18,6 @@ docker-push:
 # Starts a fly machine for ci
 run *args:
   #!/bin/bash -eux
-  just docker-push
   fly m run \
     --region iad \
     --cpus 8 \
@@ -28,7 +27,7 @@ run *args:
 
 update id *args:
   #!/bin/bash -eux
-  just docker-push
   fly m update {{id}} \
-    --size shared-cpu-8x \
+    --cpus 8 \
+    --memory 4096 \
     {{args}}

@@ -16,6 +16,8 @@ RUN set -eux; \
 		curl ca-certificates \
 		# Used by CircleCI, also Renovate
 		git ssh \
+		# Used to report code coverage
+		lcov \
 		# Used by the aws-s3 orb
 		unzip \
 		# Generally useful, to check if a file is a binary

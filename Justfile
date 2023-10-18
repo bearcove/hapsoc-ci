@@ -6,7 +6,7 @@ _default:
 # Builds all docker images
 docker:
   #!/bin/bash -eux
-  DOCKER_FLAGS="--ssh default --build-arg ENVIRONMENT=production"
+  DOCKER_FLAGS="--build-arg ENVIRONMENT=production"
   export DOCKER_BUILDKIT=1
   docker build . ${DOCKER_FLAGS} --target base --tag registry.fly.io/hapsoc-ci
 

@@ -1,3 +1,6 @@
+DEPRECATED: All hapsoc repositories are now using github-hosted runners, which
+is less of a maintenance burden.
+
 # hapsoc-ci
 
 This is a fly.io machine definition that runs jobs for <https://github.com/hapsoc>
